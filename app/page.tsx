@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import './page.scss'
 import type { Metadata } from 'next'
+import { shimmer, toBase64 } from '../utils/images';
+import './page.scss'
 
 export const metadata: Metadata = {
   title: 'Home page',
@@ -24,6 +25,10 @@ export default function Home() {
           style={{
             objectFit: "cover"
           }}
+          placeholder='blur'
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer('1080', '700')
+          )}`}
          />
       </div>
     </div>
