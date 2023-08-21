@@ -1,0 +1,17 @@
+.cart-container {
+  position: relative;
+  margin-right: 20px;
+  background-color: #fff;
+  box-shadow: 3px 3px 15px lightgray ;
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.cart-detail {
+  display: flex;
+  justify-content: space-between;
+}

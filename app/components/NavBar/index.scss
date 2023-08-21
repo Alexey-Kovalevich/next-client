@@ -1,0 +1,10 @@
+.navigation {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &__elem {
+    margin-right: 20px;
+  }
+}
