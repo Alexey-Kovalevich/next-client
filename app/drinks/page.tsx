@@ -1,41 +1,17 @@
-"use client"
+import type { Metadata } from 'next'
+import DrinkComponent from '../components/DrinkComponent/page'
 
-import React, {useState, useEffect} from 'react'
-import Card from '../components/Card';
-import './page.scss'
-
-export type DrinkType = {
-  id: string;
-  name: string;
-  dateOfFoundation: string;
-  url: string
+export const metadata: Metadata = {
+  title: 'Drink page',
+  description: 'test description',
 }
 
-const Drinks = (): JSX.Element => {
-  const [drinks, setDrinks] = useState([])
-
-  useEffect(() => {
-    fetch(`${process.env.backendBaseUrl}/drinks`)
-      .then((res) => res.json())
-      .then((data) => {
-        setDrinks(data);
-      });
-  }, []);
-
-  if (!drinks.length) { 
-    return <div>Loading</div>
-  }
-
+const DrinksPage = (): JSX.Element => {
   return (
-    <>
-      <h1 className='heading'>Drinks</h1>
-      <div className='cart-wrapper'>
-        {drinks.length && drinks.map((drink: DrinkType) => {
-          return <Card key={drink.id} drink={drink} />
-        })}
-      </div>
-    </>
+    <div>
+      <DrinkComponent />
+    </div>
   )
 }
 
-export default Drinks
+export default DrinksPage
