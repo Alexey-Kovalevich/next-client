@@ -15,6 +15,10 @@ const links = [
     href: '/food',
     label: 'Food'
   },
+  {
+    href: '/sign-in',
+    label: 'Sign in'
+  }
 ]
 
 const NavBar = () => {
