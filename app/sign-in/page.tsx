@@ -1,5 +1,5 @@
 'use client'
-import {FormEvent, FormEventHandler, useState} from 'react'
+import {useState} from 'react'
 import {signIn} from 'next-auth/react'
 import './page.scss'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -8,15 +8,12 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter()
-  const searchParams = useSearchParams()
 
   const handleSignIn = async (e: any) => {
     e.preventDefault()
-    const resp = await signIn('credentials', {email, password, redirect: false })
+    const resp = await signIn('credentials', { email, password, redirect: false })
+    
     if (!resp?.error) {
-      console.log('searchParams: ', searchParams);
-      
-      
       router.push('/dashboard')
     } else {
       alert(resp.error)

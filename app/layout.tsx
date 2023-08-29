@@ -1,3 +1,4 @@
+import AuthProvider from './components/AuthProvider/page'
 import NavBar from './components/NavBar'
 import './globals.css'
 // import styles from './page.module.css'
@@ -17,8 +18,10 @@ export default function RootLayout({
       <head />
       <body>
         <main className="main">
-          <NavBar />
-          {children}
+          {/* <AuthProvider> */}
+            <NavBar />
+            {children}
+          {/* </AuthProvider> */}
         </main>
       </body>
     </html>

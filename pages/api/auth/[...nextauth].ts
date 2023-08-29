@@ -2,38 +2,53 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 const authOptions: NextAuthOptions = {
-  session: {
-    strategy: 'jwt'
-  },
   pages: {
-    signIn: '/sign-in'
+    signIn: '/sign-in',
   },
   providers: [
     CredentialsProvider({
-      name: 'credentials',
+      name: 'Credentials',
       credentials: {
-        email: { label: 'Email', type: 'email', placeholder: 'Email' },
-        password: { label: 'Password', type: 'password', placeholder: 'Password' }
+        email: { label: 'Email', placeholder: 'Login' },
+        password: { label: 'Password', placeholder: 'Password' },
       },
       async authorize(credentials) {
-        const user = await fetch('http://localhost:3000/api/sign-in', {
+        const user = await fetch('http://localhost:3000/api/sign-in', { 
           method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({email: credentials?.email, password: credentials?.password}),
-        }).then((r) => r.json())
-        
+          body: JSON.stringify({
+            email: credentials?.email,
+            password: credentials?.password,
+          }),
+        }).then((r) => r.json());
+
         if (user.error) {
-          throw new Error(user.error) 
+          throw new Error(user.error);
         }
-        console.log('user: ', user);
-        
 
         return user;
-      }
-    })
-  ]
-}
+      },
+    }),
+  ],
+  session: {
+    strategy: 'jwt',
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token }) {
+      return {
+        ...session,
+        user: token,
+      };
+    },
+  },
+};
 
-export default NextAuth(authOptions)
+const handler = NextAuth(authOptions)
+
+export default handler
