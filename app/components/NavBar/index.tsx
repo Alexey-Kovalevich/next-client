@@ -1,5 +1,5 @@
+
 import Link from 'next/link'
-import React from 'react'
 import './index.scss'
 
 const links = [
@@ -18,10 +18,14 @@ const links = [
   {
     href: '/sign-in',
     label: 'Sign in'
-  }
+  },
+  {
+    href: '/api/auth/signout',
+    label: 'Sign out'
+  },
 ]
 
-const NavBar = () => {
+const NavBar = () => {  
   return (
     <div className='navigation'>
       {links.map(link => (
