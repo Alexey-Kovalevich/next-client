@@ -2,7 +2,7 @@
 import {useState} from 'react'
 import {signIn} from 'next-auth/react'
 import './page.scss'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const SignIn = () => {
   const [email, setEmail] = useState('');

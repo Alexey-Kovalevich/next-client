@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react"
 const Dashboard = () => {
   const session = useSession()
   
-  
   return (
     <div>
       <h1>Dashboard</h1>
