@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { shimmer, toBase64 } from '../../../utils/images';
 import { DrinkType } from '../DrinkComponent/page'
 import './index.scss'

@@ -12,7 +12,7 @@ export type FoodType = {
 }
 
 export const metadata: Metadata = {
-  title: 'Home page',
+  title: 'Food page',
   description: 'test description',
 }
 
